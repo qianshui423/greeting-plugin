@@ -1,14 +1,24 @@
 plugins {
     id "com.gradle.plugin-publish" version "0.10.1"
     id "java-gradle-plugin"
+    id "maven"
 }
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 version = "1.0.0"
 group = "com.jumao.greeting"
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
 
 gradlePlugin {
     plugins {
