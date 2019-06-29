@@ -1,4 +1,4 @@
-package org.example.greeting;
+package com.jumao.greeting;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;

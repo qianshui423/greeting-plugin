@@ -1,4 +1,4 @@
-package org.example.greeting;
+package com.jumao.greeting;
 
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.TaskAction;
