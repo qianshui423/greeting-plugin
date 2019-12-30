@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Premain-Class: com.jumao.greeting.test.aop.AopAgentTest
+Agent-Class: com.jumao.greeting.test.aop.AopAgentTest

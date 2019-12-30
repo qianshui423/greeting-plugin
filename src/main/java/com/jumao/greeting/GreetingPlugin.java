@@ -5,9 +5,9 @@ import org.gradle.api.Project;
 
 public class GreetingPlugin implements Plugin<Project> {
     public void apply(Project project) {
-        project.getTasks().create("hello", Greeting.class, (task) -> { 
+        project.getTasks().create("hello", Greeting.class, (task) -> {
             task.setMessage("Hello");
-            task.setRecipient("World");                                
+            task.setRecipient("World");
         });
     }
 }
