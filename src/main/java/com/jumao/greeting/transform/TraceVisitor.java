@@ -25,12 +25,14 @@ public class TraceVisitor extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
         MethodVisitor mv = cv.visitMethod(access, name, descriptor, signature, exceptions);
-        if (name.equals("onCreate"))
-            mv = new LogAdapter(mv, access, name, descriptor);
-        else if (name.equals("onClick"))
-            mv = new OnClickListenerAdapter(mv, access, name, descriptor, className);
-        else if (name.equals("onLongClick")) {
-            mv = new OnLongClickListenerAdapter(mv, access, name, descriptor, className);
+        if (!AsmHelper.isSystemSystemClass(className)) {
+            if (name.equals("onCreate") && "(Landroid/os/Bundle;)V".equals(descriptor))
+                mv = new LogAdapter(mv, access, name, descriptor);
+            else if (name.equals("onClick"))
+                mv = new OnClickListenerAdapter(mv, access, name, descriptor, className);
+            else if (name.equals("onLongClick")) {
+                mv = new OnLongClickListenerAdapter(mv, access, name, descriptor, className);
+            }
         }
         return mv;
     }

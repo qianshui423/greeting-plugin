@@ -53,8 +53,7 @@ public class DirectoryInputHandleTask implements Runnable {
                         }
                         case ADDED:
                         case CHANGED: {
-                            FileUtils.touch(destFile);
-                            AsmHelper.transformClass(inputFile, destFile);
+                            AsmHelper.transform(inputFile, destFile);
                             break;
                         }
                     }
@@ -80,8 +79,7 @@ public class DirectoryInputHandleTask implements Runnable {
                 if (file.isDirectory()) {
                     copyDirectory(file, destFile);
                 } else {
-                    FileUtils.touch(destFile);
-                    AsmHelper.transformClass(file, destFile);
+                    AsmHelper.transform(file, destFile);
                 }
             }
         }

@@ -6,11 +6,13 @@ import com.android.build.api.transform.Status;
 import com.android.build.api.transform.TransformInvocation;
 import com.jumao.greeting.transform.AsmHelper;
 import com.jumao.greeting.transform.model.InputModel;
+
 import org.apache.commons.io.FileUtils;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
+
+import javax.annotation.Nonnull;
 
 public class JarInputHandleTask implements Runnable {
 
@@ -37,7 +39,7 @@ public class JarInputHandleTask implements Runnable {
                 }
                 case ADDED:
                 case CHANGED: {
-                    AsmHelper.transformClass(mJarInput.getFile(), dest);
+                    AsmHelper.transform(mJarInput.getFile(), dest);
                     break;
                 }
                 case REMOVED: {
@@ -52,7 +54,7 @@ public class JarInputHandleTask implements Runnable {
                 }
             }
         } else {
-            AsmHelper.transformClass(mJarInput.getFile(), dest);
+            AsmHelper.transform(mJarInput.getFile(), dest);
         }
     }
 }
